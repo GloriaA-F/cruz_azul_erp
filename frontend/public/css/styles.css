@@ -1,0 +1,23 @@
+/* Definición de colores y animaciones corporativas */
+:root {
+    --azul-cruz-azul: #1d4ed8;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Efecto hover en tarjetas de productos */
+.product-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el modal */
+#modal-login {
+    transition: opacity 0.3s ease-in-out;
+}

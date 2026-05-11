@@ -4,9 +4,9 @@ const path = require('path');
 const app = express();
 
 // Middleware para procesar datos de formularios
+app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
 
 // Configuración de la conexión usando variables de entorno
 const pool = new Pool({

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmacias Cruz Azul | Sistema de Gestión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-blue-600 p-1.5 rounded-lg text-white font-bold">CA</div>
+                <span class="text-xl font-bold tracking-tight text-blue-800">CRUZ AZUL</span>
+            </div>
+            <div id="nav-links" class="flex gap-4">
+                <button onclick="mostrarSeccion('inicio')" class="text-slate-600 hover:text-blue-600 font-medium">Inicio</button>
+                <button id="btn-admin" onclick="abrirLogin()" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition">Panel Admin</button>
+                <button id="btn-logout" onclick="logout()" class="hidden border border-red-200 text-red-600 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-50">Cerrar Sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="sec-inicio" class="block">
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-800 py-20 text-center text-white px-4">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Tu bienestar es nuestra prioridad</h1>
+            <p class="text-lg opacity-90 max-w-2xl mx-auto">Accede a nuestro catálogo completo de medicamentos y productos de cuidado personal.</p>
+        </header>
+        <div class="max-w-7xl mx-auto p-8 grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center">
+                <div class="text-3xl mb-3">💊</div>
+                <h3 class="font-bold text-lg">Medicamentos</h3>
+                <p class="text-slate-500 text-sm mt-2">Amplio stock en genéricos y marcas comerciales.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center">
+                <div class="text-3xl mb-3">🚚</div>
+                <h3 class="font-bold text-lg">Envío Rápido</h3>
+                <p class="text-slate-500 text-sm mt-2">Recibe tus pedidos en menos de 60 minutos.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center">
+                <div class="text-3xl mb-3">👨‍⚕️</div>
+                <h3 class="font-bold text-lg">Atención 24/7</h3>
+                <p class="text-slate-500 text-sm mt-2">Consultas farmacéuticas en línea siempre disponibles.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sec-admin" class="hidden max-w-7xl mx-auto p-8">
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h2 class="text-2xl font-bold">Gestión de Inventario</h2>
+                <p class="text-slate-500">Panel administrativo para Cruz Azul</p>
+            </div>
+            <button class="bg-green-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-green-700 shadow-lg shadow-green-200">+ Agregar Producto</button>
+        </div>
+        
+        <div class="bg-white rounded-2xl shadow-sm border overflow-hidden">
+            <table class="w-full text-left">
+                <thead class="bg-slate-50 border-b">
+                    <tr>
+                        <th class="p-4 font-semibold text-slate-600">Producto</th>
+                        <th class="p-4 font-semibold text-slate-600">Precio</th>
+                        <th class="p-4 font-semibold text-slate-600">Stock</th>
+                        <th class="p-4 font-semibold text-slate-600 text-right">Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-productos"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <div id="modal-login" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-[100]">
+        <div class="bg-white w-full max-w-md rounded-2xl p-8 shadow-2xl">
+            <h2 class="text-2xl font-bold mb-2">Acceso Administrativo</h2>
+            <p class="text-slate-500 mb-6 text-sm">Ingresa tus credenciales de empleado.</p>
+            <form id="form-login" class="space-y-4">
+                <input type="text" id="user" placeholder="Usuario" class="w-full p-3 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none">
+                <input type="password" id="pass" placeholder="Contraseña" class="w-full p-3 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none">
+                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition">Entrar al Sistema</button>
+                <button type="button" onclick="cerrarLogin()" class="w-full text-slate-400 text-sm mt-2">Cerrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
