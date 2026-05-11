@@ -1,0 +1,24 @@
+name: Deploy ERP Cruz Azul a AWS
+
+on:
+  push:
+    branches: [ main ] # Se activa cuando subes algo a la rama principal
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del codigo
+        uses: actions/checkout@v3
+
+      - name: Ejecutar comandos en EC2 via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /srv/cruz_azul-erp/
+            git pull origin main
+            export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+            sudo -E docker-compose up -d --build
