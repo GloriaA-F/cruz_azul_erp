@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: erp_cruz_azul
+    ports:
+      - "80:80"
+    environment:
+      - DB_HOST=db-cruzazul.cuywz5pu6jf3.us-east-1.rds.amazonaws.com
+      - DB_USER=postgres
+      - DB_PASSWORD=inacap12345--
+      - DB_NAME=farmacia_db
+      - PORT=80
+    networks:
+      - azul-net
+    restart: always
+
+networks:
+  azul-net:
+    driver: bridge
